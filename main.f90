@@ -49,7 +49,13 @@ program main
            print *, "tile", k, j
            bytes: do i = 1, 8
               read(1, iostat=ios) x
-              print *, "byte", x
+
+              if (x == 0) then
+                 x = -1
+              else if (x == -1) then
+                 x = 0
+              end if
+              
               if (ios .ne. 0) then
                  exit outer
               end if
